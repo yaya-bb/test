@@ -1,15 +1,12 @@
 <template>
   <div class="header">
     <div class="left">
-      <a href="http://news.baidu.com/" target="_blank" class="link">新闻</a>
-      <a href="https://www.hao123.com/?src=from_pc_logon" target="_blank" class="link">hao123</a>
-      <a href="https://map.baidu.com/" target="_blank" class="link">地图</a>
-      <a href="https://tieba.baidu.com/index.html" target="_blank" class="link">贴吧</a>
-      <a href="https://haokan.baidu.com/?sfrom=baidu-top" target="_blank" class="link">视频</a>
-      <a href="https://image.baidu.com/" target="_blank" class="link">图片</a>
-      <a href="https://pan.baidu.com/disk/main?from=1026962h#/index?category=all" target="_blank" class="link">网盘</a>
-      <a href="https://www.baidu.com/more/" target="_blank" class="link">更多</a>
+      <li v-for="(items, index) in bannerList" :key="index" class="link">
+        <a  @click="goHere(items.bannerUrl)"
+            :title='items.bannerName'>{{ items.bannerName }}</a>
+      </li>
     </div>
+    
     <div class="right">
       <!-- 天气插件 -->
       <!-- <div id="he-plugin-simple" class="weather"></div> -->
@@ -33,7 +30,25 @@
 </template>
 <script>
 export default {
-  name: 'NavHeader'
+  name: 'NavHeader',
+  data() {
+    return {
+      bannerList: [
+        { 'bannerName': '新闻', 'bannerUrl': 'http://news.baidu.com/' },
+        { 'bannerName': 'hao123', 'bannerUrl': 'https://www.hao123.com/?src=from_pc_logon' },
+        { 'bannerName': '地图', 'bannerUrl': 'https://tieba.baidu.com/index.html' },
+        { 'bannerName': '贴吧', 'bannerUrl': 'https://haokan.baidu.com/?sfrom=baidu-top' },
+        { 'bannerName': '视频', 'bannerUrl': 'https://image.baidu.com/' },
+        { 'bannerName': '图片', 'bannerUrl': 'https://pan.baidu.com/disk/main?from=1026962h#/index?category=all' },
+        { 'bannerName': '更多', 'bannerUrl': 'https://www.baidu.com/more/' },
+      ]
+    }
+  },
+  methods: {
+    goHere(url) {
+      window.open(url,"_blank");
+      }
+    }
   // mounted() {
   //   window.WIDGET = {
   //       "CONFIG": {
@@ -80,6 +95,7 @@ export default {
       margin-top: 24px;
       margin-right: 19px;
       font-size: 13px;
+      cursor: pointer;
     }
     }
     .right {

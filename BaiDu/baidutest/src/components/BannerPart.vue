@@ -7,15 +7,105 @@
     </div>
     <div class="Search">
       <div class="searchBox">
-        <input type="text" class="searchInput" style="padding-left: 10px;">
-        <input type="button" value="搜索" class="searchButton">
+        <input
+          class="searchInput"
+          v-model="search.keywords"
+          @focus="showhistory"
+          @blur="hidehistory"
+          @keyup.enter="submit"
+          />
+        <input
+          type="button"
+          value="搜索"
+          class="searchButton"
+          >
       </div>
+    </div>
+    <div class="allHislist" v-show="search.allHislistShow">
+    <!-- 历史记录 -->
+      <ul>
+        <li v-for="(item, index) in search.allHislist" :key="index" @click="selecthistory($event)">{{ item }}</li>
+        <li class="eliminatehistory" @click="eliminatehistory">清空历史记录</li>
+      </ul>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "BannerPart"
+  name: "BannerPart",
+  data() {
+    return {
+      search: {
+        // 显示历史记录
+        allHislistShow: '',
+        // 搜索关键字
+        keywords: '',
+        // 最近搜索列表
+        allHislist: [],
+      }
+    }
+  },
+  methods: {
+    // 展示历史记录
+    showhistory() {
+      this.search.allHislistShow = true
+    },
+    // 隐藏历史记录
+    hidehistory() {
+      // this.search.allHislistShow = false
+      let self = this
+      this.searchBoxTimeout = setTimeout(function () {
+        self.search.allHislistShow = false;
+      }, 300);
+    },
+    // 将搜索存在本地浏览器中
+    submit() {
+      //判断是否有重复
+      var index = this.search.allHislist.findIndex((ele) => {
+        return ele == this.search.keywords;
+      });
+      //如果有的话就删除重复
+      if (index != -1) {
+        this.search.allHislist.splice(index, 1);
+      }
+      //向数组第一位添加
+      this.search.allHislist.unshift(this.search.keywords);
+      //如果数组长度大于4 就删除最后一项
+      if (this.search.allHislist.length > 4) {
+        this.search.allHislist.splice(5, 1);
+      }
+      // 本地存储历史记录数组
+      localStorage.allHislist = JSON.stringify(this.search.allHislist);
+      this.search.keywords = ''
+    },
+    // 清空历史记录
+    eliminatehistory() {
+      this.hidehistory()
+      localStorage.removeItem('allHislist');
+      //取消timeout
+      clearTimeout(this.searchBoxTimeout);
+      this.search.allHislist = []
+    },
+    // 获取浏览记录
+    getallHislist() {
+      let all = localStorage.allHislist;
+      if (all) {
+        // 将数组转字符串
+        this.search.allHislist = JSON.parse(all);
+      }
+    },
+    // 选中历史记录
+    selecthistory(e) {
+      let word = e.currentTarget.innerHTML
+      this.search.keywords = word
+      this.hidehistory()
+      clearTimeout(this.searchBoxTimeout);
+    },
+    // 获取浏览记录
+    created() {
+      this.getallHislist()
+    }
+}
 }
 </script>
 <style lang="scss">
@@ -81,6 +171,21 @@ export default {
       }
       
     }
-    
+    .allHislist {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      ul li {
+        width: 620px;
+        height: 30px;
+        line-height: 30px;
+        padding: 5px 15px;
+      }
+    }
+    .eliminatehistory {
+      border: 1px solid #ccc;
+      text-align: center;
+    }
   }
 </style>
