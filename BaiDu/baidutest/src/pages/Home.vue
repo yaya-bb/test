@@ -1,17 +1,20 @@
 <template>
   <div>
     <nav-header></nav-header>
-  </div>
+    <banner-part></banner-part>
+  </div>  
 </template>
 <script>
 import NavHeader from "@/components/NavHeader.vue"
+import BannerPart from "@/components/BannerPart.vue"
 export default {
   name: 'Home',
   components: {
-    NavHeader
+    NavHeader,
+    BannerPart
   }
 }
 </script>
-<style lang="scss">
-  @import './../assets/scss/reset.scss'
+<style scoped>
+  @import './../assets/scss/reset.scss';
 </style>

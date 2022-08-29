@@ -23,6 +23,7 @@
             <li class="setting">隐私设置</li>
             <li class="setting">隐藏资讯</li>
             <li class="setting">关闭播报</li>
+            <hr color=#d7d9e0 width="70%"/>
             <li class="setting">更换皮肤</li>
           </ul>
         </div>
@@ -32,7 +33,7 @@
 </template>
 <script>
 export default {
-  // name: 'NavHeader',
+  name: 'NavHeader'
   // mounted() {
   //   window.WIDGET = {
   //       "CONFIG": {
@@ -63,7 +64,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .left {
+  .header {
+    z-index: 100;
+    .left {
     position: absolute;
     left: 0;
     top: 0;
@@ -71,33 +74,58 @@ export default {
     height: 60px;
     padding-left: 24px;
     .link {
-      color: blank;
+      color: #222;
       display: inline-block;
       position: relative;
       margin-top: 24px;
       margin-right: 19px;
       font-size: 13px;
     }
-  }
-  .right {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding-left: 200px;
-    padding-right: 24px;
-    .settings {
-      position: relative;
-      display: inline-block;
-      vertical-align: top;
-      margin-top: 19px;
-      span {
-        cursor: pointer;
-      }
-      &:hover {
+    }
+    .right {
+      position: absolute;
+      top: 0;
+      right: 50px;
+      // padding-left: 200px;
+      // padding-right: 24px;
+      .settings {
+        position: relative;
+        right: 0;
+        margin-top: 19px;
+        span {
+          cursor: pointer;
+        }
+        &:hover {
+          .children {
+            display: inline-block;
+          }
+        }
         .children {
-          width: 80px;
-          height: 210px;
-          opacity: 1;
+          display: none;
+          position: absolute;
+          width: 75px;
+          height: 300px;
+          top: 20px;
+          right: -25px;
+          // 盒子阴影
+          ul {
+            display: flex;
+            // flex-flow同时设置flex-direction和flex-wrap
+            // flex-direction设置主轴的方向
+            // flex-wrap设置子元素是否换行
+            flex-flow: column wrap;
+            width: 100%;
+            justify-content: space-around;
+            border: 1px solid #fff;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            li {
+              display: inline-block;
+              text-align: center;
+              height: 35px;
+              line-height: 35px;
+            }
+          }
         }
       }
     }
