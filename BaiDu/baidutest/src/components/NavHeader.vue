@@ -14,12 +14,12 @@
         <span>设置</span>
         <div class="children">
           <ul>
-            <li class="setting">搜索设置</li>
-            <li class="setting">高级搜索</li>
-            <li class="setting">关闭预测</li>
-            <li class="setting">隐私设置</li>
-            <li class="setting">隐藏资讯</li>
-            <li class="setting">关闭播报</li>
+            <li class="setting"><a>搜索设置</a></li>
+            <li class="setting"><a>高级搜索</a></li>
+            <li class="setting"><a>关闭预测</a></li>
+            <li class="setting"><a>隐私设置</a></li>
+            <li class="setting"><a>隐藏资讯</a></li>
+            <li class="setting"><a>关闭播报</a></li>
             <hr color=#d7d9e0 width="70%"/>
             <li class="setting">更换皮肤</li>
           </ul>

@@ -1,0 +1,29 @@
+.card {
+  position: relative;
+  margin: 10px;
+}
+.bg {
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #5f687e;
+}
+.logo {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+.info {
+  position: absolute;
+  color: #5f687e;
+  font-size: 12px;
+  left: 20px;
+  bottom: 20px;
+}
+.name {
+  font-weight: bold;
+}
+.desc {
+  margin-bottom: 5px;
+}

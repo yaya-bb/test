@@ -1,0 +1,9 @@
+<view class="card">
+  <image class="bg" mode="widthFix" src="../../img/bg.png"></image>
+  <image class="logo" src="../../img/logo.png"></image>
+  <view class="info">
+    <view class="name">鸭鸭</view>
+    <view class="desc">本科</view>
+    <view>计算机科学与技术专业</view>
+  </view>
+</view>
