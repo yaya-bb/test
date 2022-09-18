@@ -1,0 +1,44 @@
+.page {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	/* 定义flex布局 */
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.card {
+	width: 650upx;
+	height: 360upx;
+	background: url('http://itzixi.com:88/group1/M00/00/05/CpoxxFx6IbaAVgYMAAC3osiLBpo919.jpg') repeat;
+  border-radius: 15upx;
+	box-shadow: 3px 2px 10px #dedede;
+	position: relative;
+  /* margin: 10px; */
+	padd: 30upx;
+}
+.logo {
+  width:100upx;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+.info {
+  color: #5f687e;
+  font-size: 12px;
+	margin-top: 200upx;
+	margin-left: 30upx;
+}
+.name {
+  font-weight: bold;
+}
+.desc {
+  margin-bottom: 20upx;
+}
+.logo-wrapper {
+	/* 定义flex布局 */
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
