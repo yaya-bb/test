@@ -1,0 +1,23 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/list/List",
+			"style": {
+				"navigationBarTitleText": "新闻列表"
+			}
+		}, {
+			"path": "pages/detail/Detail",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "新闻列表",
+		"navigationBarBackgroundColor": "#fff",
+		"fontSize": "14px", //字体大小
+		"backgroundColor": "#fff"
+	},
+	"uniIdRouter": {}
+}

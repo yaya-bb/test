@@ -1,0 +1,14 @@
+
+.detail {
+	padding: 10rpx;
+	flex-wrap: wrap;
+}
+.title {
+	line-height: 2em;
+	font-size: 40rpx;
+	font-weight: bold;
+}
+.content {
+	line-height: 2em;
+}
+

@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/list/List",
+    "pages/detail/Detail"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "新闻列表",
+    "navigationBarBackgroundColor": "#fff",
+    "fontSize": "14px",
+    "backgroundColor": "#fff"
+  },
+  "usingComponents": {}
+}
