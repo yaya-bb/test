@@ -13,16 +13,18 @@
 		data() {
 			return {
 				title: '',
-				strings: ''
+				strings: '',
+				id: ''
 			}
 		},
 		onLoad: function(e) {
-			console.log(e.newid);
+			console.log(e.id);
 				uni.request({
-					url: 'https://unidemo.dcloud.net.cn/api/news/36kr/' + e.newid,
+					url: 'https://unidemo.dcloud.net.cn/api/news/36kr/' + e.id,
 					method: 'GET',
 					success: res => {
 						console.log(res);
+						this.id = e.id;
 						this.title = res.data.title;
 						this.strings = res.data.content;
 					}
