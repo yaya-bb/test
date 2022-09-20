@@ -6,21 +6,24 @@ Page({
    */
   data: {
     title: '',
-    strings: ''
+    strings: '',
+    // list传来的newid
+    id:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(options.newid),
+    console.log(options.id),
     wx.request({
-      url: 'https://unidemo.dcloud.net.cn/api/news/36kr/'+ options.newid,
+      url: 'https://unidemo.dcloud.net.cn/api/news/36kr/'+ options.id,
       success: res => {
         console.log(res.data),
         this.setData({
+          id: options.id,
           title: res.data.title,
-          strings: res.data.content
+          strings: res.data.content,
         })
       },
       fail: () => {

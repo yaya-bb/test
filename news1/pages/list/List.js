@@ -6,18 +6,22 @@ Page({
    */
   data: {
     title: '',
-		list: []
+    list: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: 'https://unidemo.dcloud.net.cn/api/news',
       method: 'GET',
       data: {},
       success: res => {
+        wx.hideLoading(),
         console.log(res),
         this.setData({
           list: res.data
@@ -28,15 +32,15 @@ Page({
       }
     })
   },
-  goDetail: function(e) {
-    // event.target 触发事件的组件的一些属性值集合，想要一个大组件中有多个触发事件，就可以用target减少事件定义
-    // event.currentTarget 当前组件的一些属性值集合，想要更精确用这个
-    var newsid = e.currentTarget.dataset.newid
-    wx.navigateTo ({
-      url: `../detail/Detail?newid=${newsid}`
-    });
-    console.log(newsid);
-  },
+  // goDetail: function(e) {
+  //   // event.target 触发事件的组件的一些属性值集合，想要一个大组件中有多个触发事件，就可以用target减少事件定义
+  //   // event.currentTarget 当前组件的一些属性值集合，想要更精确用这个
+  //   let newsid = e.currentTarget.dataset.newid
+  //   wx.navigateTo ({
+  //     url: `../detail/Detail?id=${newsid}`
+  //   });
+  //   console.log(newsid);
+  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
