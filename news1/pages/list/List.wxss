@@ -1,0 +1,28 @@
+/* pages/list/List.wxss */
+.lists {
+  padding: 15rpx;
+}
+.list {
+  float: left;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  width: 100%;
+}
+.icon {
+  float: left;
+  width: 100rpx;
+  height: 100rpx;
+  padding-right: 20rpx;
+}
+.content {
+  padding-left: 15rpx;
+  /* 超出高度或宽度出现滚动条,外部div适应内部的div */
+  overflow: auto;
+}
+.title {
+  font-size: 16px;
+}
+.time {
+  color: #999;
+  font-size: 13px;
+}

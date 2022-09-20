@@ -1,0 +1,14 @@
+{
+  "pages":[
+    "pages/list/List",
+    "pages/detail/Detail"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "新闻列表",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

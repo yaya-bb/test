@@ -1,5 +1,7 @@
 <template>
 	<view class="news">
+		<!-- 为了更好的进行数据传递：微信小程序自定义属性data-key -->
+		<!-- 在事件中被dataset接收 -->
 		<view class="lists" v-for="(item,index) in list" :key="index" @tap="goDetail" :data-newid="item.post_id">
 			<view class="list" >
 				<image class="icon" :src="item.author_avatar"></image>
@@ -41,6 +43,8 @@
 		methods: {
 			// 获取新闻信息
 			goDetail(e) {
+				// event.target 触发事件的组件的一些属性值集合，想要一个大组件中有多个触发事件，就可以用target减少事件定义
+				// event.currentTarget 当前组件的一些属性值集合，想要更精确用这个
 				var newsid = e.currentTarget.dataset.newid
 				uni.navigateTo ({
 					url: '../detail/Detail?newid='+newsid,
@@ -73,6 +77,7 @@
 	}
 	.content {
 		padding-left: 15upx;
+		/* 超出高度或宽度出现滚动条,外部div适应内部的div */
 		overflow: auto;
 	}
 	.title {

@@ -1,0 +1,18 @@
+<!--pages/list/List.wxml-->
+<view class="news">
+		<!-- 为了更好的进行数据传递：微信小程序自定义属性data-key -->
+		<!-- 在事件中被dataset接收 -->
+		<view class="lists" wx:for="{{list}}" wx:key="index" bindtap="goDetail" data-newid="{{item.post_id}}">
+			<view class="list" >
+				<image class="icon" src="{{item.author_avatar}}"></image>
+				<view class="content">
+					<view class="title">
+						{{item.title}}
+					</view>
+					<view class="time">
+						{{item.created_at}}
+					</view>
+				</view>
+			</view>
+		</view>
+</view>

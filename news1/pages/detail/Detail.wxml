@@ -1,0 +1,7 @@
+<!--pages/detail/Detail.wxml-->
+<view class="detail">
+		<view class="title">{{title}}</view>
+		<view class="contents">
+			<rich-text class="richText" nodes="{{strings}}"></rich-text>
+		</view>
+</view>
