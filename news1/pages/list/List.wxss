@@ -15,7 +15,7 @@
   padding-right: 20rpx;
 }
 .content {
-  padding-left: 15rpx;
+  padding: 0 15rpx;
   /* 超出高度或宽度出现滚动条,外部div适应内部的div */
   overflow: auto;
 }

@@ -16,9 +16,13 @@ Page({
    */
   onLoad(options) {
     console.log(options.id),
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: 'https://unidemo.dcloud.net.cn/api/news/36kr/'+ options.id,
       success: res => {
+        wx.hideLoading(),
         console.log(res.data),
         this.setData({
           id: options.id,
