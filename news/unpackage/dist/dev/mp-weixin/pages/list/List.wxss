@@ -15,13 +15,21 @@
 	padding-right: 20rpx;
 }
 .content {
-	padding-left: 15rpx;
+	padding-right: 25rpx;
+	/* 超出高度或宽度出现滚动条,外部div适应内部的div */
 	overflow: auto;
 }
 .title {
 	font-size: 16px;
+	/* 内容超出三行显示省略号 */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
 }
 .time {
+	margin-top: 10rpx;
 	color: #999;
 	font-size: 12px;
 }

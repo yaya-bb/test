@@ -29,39 +29,33 @@
 			}
 		},
 		onLoad: function() {
-			uni.showLoading({
-			  title: '加载中',
-			}),
-			uni.request({
-				url: 'https://unidemo.dcloud.net.cn/api/news',
-				method: 'GET',
-				data: {},
-				success: res => {
-					this.list = res.data;
-					console.log(res);
-					uni.hideLoading();
-				},
-				fail: () => {
-					
-				}
-			})
+			this.getList();
+		},
+		methods: {
+			  getList() {
+			    uni.request({
+			    	url: 'https://unidemo.dcloud.net.cn/api/news',
+			    	method: 'GET',
+			    	data: {},
+			    	success: res => {
+			    		this.list = res.data;
+			    		console.log(res);
+			    		uni.hideLoading();
+			    	},
+			    	fail: () => {
+			    		
+			    	}
+			    })
+			  },
+			  /**
+			   * 页面相关事件处理函数--监听用户下拉动作
+			   */
+			  onPullDownRefresh() {
+			    // 重新发起请求，并关闭下拉窗口
+			    this.getList(() => uni.stopPullDownRefresh());
+			  },
 		}
-		// methods: {
-		// 	// 获取新闻信息
-		// 	goDetail(e) {
-		// 		// event.target 触发事件的组件的一些属性值集合，想要一个大组件中有多个触发事件，就可以用target减少事件定义
-		// 		// event.currentTarget 当前组件的一些属性值集合，想要更精确用这个
-		// 		var newsid = e.currentTarget.dataset.newid
-		// 		uni.navigateTo ({
-		// 			url: '../detail/Detail?newid='+newsid,
-		// 			success: res => {
-		// 				// console.log(e);
-		// 				// console.log("已跳转")
-		// 				console.log(newsid)
-		// 			}
-		// 		});
-		// 	}
-		// }
+			
 	}
 </script>
 
@@ -82,14 +76,21 @@
 		padding-right: 20upx;
 	}
 	.content {
-		padding-left: 15upx;
+		padding-right: 25upx;
 		/* 超出高度或宽度出现滚动条,外部div适应内部的div */
 		overflow: auto;
 	}
 	.title {
 		font-size: 16px;
+		/* 内容超出三行显示省略号 */
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
 	}
 	.time {
+		margin-top: 10upx;
 		color: #999;
 		font-size: 12px;
 	}

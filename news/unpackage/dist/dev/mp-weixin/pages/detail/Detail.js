@@ -147,15 +147,18 @@ var _default =
   data: function data() {
     return {
       title: '',
-      strings: '' };
+      strings: '',
+      id: '' };
 
   },
   onLoad: function onLoad(e) {var _this = this;
-    console.log(e.newid);
+    console.log(e.id);
     uni.request({
-      url: 'https://unidemo.dcloud.net.cn/api/news/36kr/' + e.newid,
+      url: 'https://unidemo.dcloud.net.cn/api/news/36kr/' + e.id,
       method: 'GET',
       success: function success(res) {
+        console.log(res);
+        _this.id = e.id;
         _this.title = res.data.title;
         _this.strings = res.data.content;
       } });

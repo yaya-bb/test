@@ -156,6 +156,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -164,32 +168,31 @@ var _default =
       list: [] };
 
   },
-  onLoad: function onLoad() {var _this = this;
-    uni.request({
-      url: 'https://unidemo.dcloud.net.cn/api/news',
-      method: 'GET',
-      data: {},
-      success: function success(res) {
-        _this.list = res.data;
-        console.log(res);
-      },
-      fail: function fail() {
-
-      } });
-
+  onLoad: function onLoad() {
+    this.getList();
   },
   methods: {
-    // 获取新闻信息
-    goDetail: function goDetail(e) {
-      var newsid = e.currentTarget.dataset.newid;
-      uni.navigateTo({
-        url: '../detail/Detail?newid=' + newsid,
+    getList: function getList() {var _this = this;
+      uni.request({
+        url: 'https://unidemo.dcloud.net.cn/api/news',
+        method: 'GET',
+        data: {},
         success: function success(res) {
-          // console.log(e);
-          // console.log("已跳转")
-          console.log(newsid);
+          _this.list = res.data;
+          console.log(res);
+          uni.hideLoading();
+        },
+        fail: function fail() {
+
         } });
 
+    },
+    /**
+        * 页面相关事件处理函数--监听用户下拉动作
+        */
+    onPullDownRefresh: function onPullDownRefresh() {
+      // 重新发起请求，并关闭下拉窗口
+      this.getList(function () {return uni.stopPullDownRefresh();});
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
