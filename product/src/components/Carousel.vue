@@ -40,7 +40,7 @@ export default {
     let bannerHeight = ref('620');
     // 使轮播框大小随图片大小变化
     let imgHeight = ref(null);
-    // 页面渲染时加载方法，页面加载第一次获取图片高度，并渲染到页面中
+    // 页面渲染时加载方法，页面加载第一次获取图片高度，并渲染
     const imgLoad = () => {
       nextTick(() => {
         bannerHeight.value = imgHeight.value[0].height;

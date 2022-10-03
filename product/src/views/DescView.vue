@@ -1,27 +1,9 @@
 <template>
   <div class="box column center">
     <!-- 产品中心 -->
-    <img :src="imagesUrl + 'title21.png'" class="title-img" />
-    <div class="sub-box">
-      <div class="describe-box">
-        <img :src="imagesUrl + 'ptext21.png'" class="ptext1-img" />
-        <div class="white-box column center">
-          <img
-            :src="imagesUrl + 'ptext22.png'"
-            class="ptext1-img"
-            style="width: 30%"
-          />
-          <p class="white-text">
-            好学森平台，全新的提供“小学生作业辅导规范”解决方案的平台。
-            主打业务是协助家长，解决“陪伴、呵护、精准、监督、批改、优化、提升”孩子课后学习的难题。
-          </p>
-        </div>
-      </div>
-      <img :src="imagesUrl + 'pic21.png'" class="pic-img" />
-      <div class="white-text2">
-        以本地本科大学为中心，回应周围地区的学生家长需求
-      </div>
-    </div>
+    <img src="../../public/imgs/product1.jpg"
+         class="title-img"
+         style="width: 100%"/>
     <!-- 产品介绍 -->
     <img :src="imagesUrl + 'title22.png'" class="title-img" />
     <div class="intro-box">
@@ -57,7 +39,7 @@
     <!-- 功能介绍 -->
     <img :src="imagesUrl + 'title23.png'" class="title-img" />
     <div class="white-text" style="text-align: center">
-      优青智能家教平台为了充分满足用户需求，<br />
+      好学森智能家教平台为了充分满足用户需求，<br />
       针对广大家长与大学生教师群体，推出了<span class="blue-text"
         >个性化、精准化</span
       >的智能端口功能。
@@ -65,18 +47,18 @@
     <div class="panel" v-show="panelSwitch == 0">
       <!-- 左侧 -->
       <div class="left">
-        <div class="left-text1">平台出发点 — —</div>
-        <div class="left-text2">“优质 / 优价 / 优服务”</div>
+        <div class="left-text1">平台出发点</div>
+        <div class="left-text2"> — — “优质 / 优价 / 优服务”</div>
         <div class="left-text3">
           平台采用五面一体，线上线下结合的模式，来保持优质的教育输出，用来满足每个需要家教的家庭。
         </div>
       </div>
       <!-- 右侧 -->
-      <img :src="imagesUrl + 'pic25.png'" class="function-img" />
+      <img src="../../public/imgs/product2.jpg" class="function-img" />
       <!-- 点击 -->
       <div class="function-box">
-        <div class="function-btn" @click="panelSwitch = 1">家长端<br />→</div>
-        <div class="function-btn" @click="panelSwitch = 2">教师端<br />→</div>
+        <div class="function-btn" @click="panelSwitch = 1"><br />&nbsp;</div>
+        <div class="function-btn" @click="panelSwitch = 2"><br />&nbsp;</div>
       </div>
     </div>
     <!-- 切换 -->
@@ -84,15 +66,15 @@
     <div class="panel" v-show="panelSwitch == 1">
       <img :src="imagesUrl + 'pic26.png'" class="function-img" />
       <!-- 返回键 -->
-      <div class="function-btn back" @click="panelSwitch = 0">←</div>
+      <div class="function-btn back" @click="panelSwitch = 0">→</div>
       <div class="function-block" style="left: 35%; top: 9.6vw">
-        <div style="width: 28%">
+        <div style="width: 30%">
           <div class="function-item">
             <div class="blue-block"></div>
             <div>主动选师系统</div>
           </div>
           <div class="function-item2">
-            优青平台拥有高数量、高水准的教师团队，家长可按需找师，直接向心意老师发出试课邀请。
+            好学森平台拥有高数量、高水准的教师团队，家长可按需找师，直接向心意老师发出试课邀请。
           </div>
         </div>
         <div style="width: 28%">
@@ -101,7 +83,7 @@
             <div>助教系统</div>
           </div>
           <div class="function-item2">
-            优青平台不仅仅提供智能教学功能，还提供“助教跟进模式”，专门为家长提供人工服务。
+            好学森平台不仅仅提供智能教学功能，还提供“助教跟进模式”，专门为家长提供人工服务。
           </div>
         </div>
         <div style="width: 28%">
@@ -110,7 +92,7 @@
             <div>打卡流程</div>
           </div>
           <div class="function-item2">
-            为了家长更放心孩子的学习进度，优青提供记录课程的功能，家长只需点击确认教师的打卡即可。
+            为了家长更放心孩子的学习进度，好学森提供记录课程的功能，家长只需点击确认教师的打卡即可。
           </div>
         </div>
       </div>
@@ -121,7 +103,7 @@
             <div>请假管理</div>
           </div>
           <div class="function-item2">
-            “请假管理”是优青平台设计的个性化、人性化功能设计，家长可以在行程不便的时候，对课程进行“请假”或者“更改上课时间”协调处理。
+            “请假管理”是好学森平台设计的个性化、人性化功能设计，家长可以在行程不便的时候，对课程进行“请假”或者“更改上课时间”协调处理。
           </div>
         </div>
         <div style="width: 28%">
@@ -139,7 +121,7 @@
             <div>备课资料</div>
           </div>
           <div class="function-item2">
-            为了家长更省心、孩子的学习更舒心；优青平台专门为家长提供了“备课资料”下载区。
+            为了家长更省心、孩子的学习更舒心；好学森平台专门为家长提供了“备课资料”下载区。
           </div>
         </div>
       </div>
@@ -150,7 +132,7 @@
             <div>智能选师系统</div>
           </div>
           <div class="function-item2">
-            智能选师使家长选师更加便捷，只需填写孩子需求清单，优青平台即可智能匹配出至少六位优秀教师。
+            智能选师使家长选师更加便捷，只需填写孩子需求清单，好学森平台即可智能匹配出至少六位优秀教师。
           </div>
         </div>
         <div style="width: 28%">
@@ -159,7 +141,7 @@
             <div>反馈系统</div>
           </div>
           <div class="function-item2">
-            优青平台提供实时教学效率保障与进步，家长可以每周一对教师的授课情况进行反馈、按需求协调后续教学安排。
+            好学森平台提供实时教学效率保障与进步，家长可以每周一对教师的授课情况进行反馈、按需求协调后续教学安排。
           </div>
         </div>
         <div style="width: 28%">
@@ -168,7 +150,7 @@
             <div>消息助手</div>
           </div>
           <div class="function-item2">
-            为了提高对家长服务的高效性、便利性；优青平台针对各项特色功能开发了五个ai智能小助手：打卡、评价、查课、请假、家教小助手。
+            为了提高对家长服务的高效性、便利性；好学森平台针对各项特色功能开发了五个ai智能小助手：打卡、评价、查课、请假、家教小助手。
           </div>
         </div>
       </div>
@@ -385,25 +367,26 @@ export default {
   .left {
     width: 35%;
     position: relative;
-    padding-left: 8%;
-    padding-top: 20vw;
+    padding-left: 2%;
+    padding-top: 12vw;
     letter-spacing: 0.48vw;
     .left-text1 {
-      font-size: 5em;
+      font-size: 4.5em;
       font-weight: 600;
-      margin-bottom: 1.2vw;
     }
 
     .left-text2 {
-      font-size: 5em;
+      margin-top: 2vw;
+      font-size: 2em;
+      font-weight: bold;
       color: #3370ff;
     }
 
     .left-text3 {
-      font-size: 3.5em;
+      font-size: 2em;
       line-height: 1.5em;
-      margin-top: 5vw;
-      width: 45vw;
+      margin-top: 4.5vw;
+      width: 40vw;
       color: #606266;
       text-align: start;
     }
@@ -411,7 +394,7 @@ export default {
 
   .function-img {
     width: auto;
-    height: 58vw;
+    height: 55vw;
   }
   .function-box {
     position: absolute;
@@ -424,7 +407,7 @@ export default {
     letter-spacing: 0.3vw;
   }
   .function-btn {
-    font-size: 10em;
+    font-size: 4em;
     font-weight: bold;
     color: white;
     opacity: 0.8;
@@ -475,7 +458,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.5em;
+    font-size: 2em;
     font-weight: bold;
     color: #3370ff;
     letter-spacing: 0.2vw;
@@ -512,11 +495,12 @@ export default {
     border-top-left-radius: 50%;
   }
   .function-item2 {
-    width: 84%;
-    font-size: 3em;
+    width: 100%;
+    font-size: 1em;
     letter-spacing: 0.2vw;
     line-height: 1.5em;
     color: #909399;
+    font-weight: bold;
     padding: 1.2vw 8%;
     background-color: white;
     box-shadow: 1px 2px 4px #dae3fb;

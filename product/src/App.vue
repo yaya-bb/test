@@ -1,7 +1,10 @@
 <template>
   <div>
-    <NavHeader />
+    <NavHeader :scrollFlag="scrollFlag" />
     <Carousel />
+    <div :style="{ paddingTop: '2px' }">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -14,6 +17,11 @@ export default {
   components: {
     NavHeader,
     Carousel
+  },
+  data() {
+    return {
+      scrollFlag: false
+    }
   }
 }
 </script>
