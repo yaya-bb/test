@@ -37,8 +37,8 @@
           <img src="../../public/imgs/product2.jpg" class="function-img" />
           <!-- 点击 -->
           <div class="function-box">
-            <div class="function-btn parents" @click="panelSwitch = 1">&nbsp;</div>
-            <div class="function-btn teachers" @click="panelSwitch = 2">&nbsp;</div>
+            <div class="function-btn parents" @click="panelSwitch = 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div class="function-btn teachers" @click="panelSwitch = 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
           </div>
         </div>
       </div>
@@ -348,7 +348,7 @@ export default {
   //功能介绍
   .function {
     text-align: center;
-    width: 100%;
+    // width: 100%;
     .title-img {
       width: 60%;
       height: auto;
@@ -357,7 +357,7 @@ export default {
       position: relative;
       width: 45%;
       height: 48vw;
-      padding-left: 3%;
+      padding-left: 4%;
       padding-top: 12vw;
       letter-spacing: 0.48vw;
       .text {
@@ -397,23 +397,30 @@ export default {
       position: relative;
       .function-box {
         position: absolute;
-        right: 9vw;
-        height: 70%;
+        top: 9vw;
+        height: 10%;
+        width: 10%;
+        right: -200px;
         margin-top: 10%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         letter-spacing: 0.3vw;
+        .parents {
+          position: absolute;
+          top: 13%;
+          left: 15vw;
+        }
+        .teachers {
+          position: absolute;
+          top: 453%;
+          left: 15vw;
+        }
       }
-      .parents {
+      .function-img {
         position: absolute;
-        top: -105%;
-        right: 0;
-      }
-      .teachers {
-        position: absolute;
-        top: -42%;
-        right: 0;
+        top: 0;
+        left: -100px;
       }
     }
   }
@@ -427,7 +434,7 @@ export default {
     font-size: 4em;
     font-weight: bold;
     color: #fff;
-    opacity: 0.9;
+    opacity: 0.8;
     cursor: pointer;
     text-align: center;
     z-index: 99999;
@@ -436,7 +443,6 @@ export default {
   .function-btn:hover {
     opacity: 0.9;
   }
-
   .panel {
     margin-top: 1.2vw;
     margin-bottom: 10vw;
