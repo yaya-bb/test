@@ -37,8 +37,8 @@
           <img src="../../public/imgs/product2.jpg" class="function-img" />
           <!-- 点击 -->
           <div class="function-box">
-            <div class="function-btn parents" @click="panelSwitch = 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-            <div class="function-btn teachers" @click="panelSwitch = 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div class="function-btn parents" @click="panelSwitch = 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div class="function-btn teachers" @click="panelSwitch = 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
           </div>
         </div>
       </div>
@@ -136,7 +136,6 @@
           </div>
         </div>
       </div>
-
       <!-- 老师端 -->
       <div class="panel" v-show="panelSwitch == 2">
         <img :src="imagesUrl + 'pic27.png'" class="function-img" />
@@ -348,6 +347,7 @@ export default {
   //功能介绍
   .function {
     text-align: center;
+    margin-top: -4vw;
     // width: 100%;
     .title-img {
       width: 60%;
@@ -413,7 +413,7 @@ export default {
         }
         .teachers {
           position: absolute;
-          top: 453%;
+          top: 570%;
           left: 15vw;
         }
       }
@@ -444,10 +444,10 @@ export default {
     opacity: 0.9;
   }
   .panel {
-    margin-top: 1.2vw;
-    margin-bottom: 10vw;
+    margin-top: -4vw;
     position: relative;
-    width: 100%;
+    width: auto;
+    height: 48vw;
     animation: slideIn 0.3s ease;
     display: flex;
     flex-direction: row;
@@ -574,15 +574,5 @@ export default {
     width: 60%;
     height: auto;
   }
-}
-
-.blue-text {
-  color: #3370ff;
-}
-
-.ptext1-img {
-  width: 50%;
-  height: auto;
-  margin-bottom: 1vw;
 }
 </style>
