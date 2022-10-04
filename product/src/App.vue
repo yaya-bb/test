@@ -5,18 +5,22 @@
     <div :style="{ paddingTop: '2px' }">
       <router-view />
     </div>
+    <NavFooter />
   </div>
 </template>
 
 <script>
 import NavHeader from './components/NavHeader.vue'
 import Carousel from './components/Carousel.vue'
+import NavFooter from './components/NavFooter.vue'
+
 
 export default {
   name: 'App',
   components: {
     NavHeader,
-    Carousel
+    Carousel,
+    NavFooter
   },
   data() {
     return {
