@@ -7,15 +7,39 @@
     <!-- 平台介绍 -->
     <div class="platform">
       <img src="../../public/imgs/product3.png" class="title-img"/>
-      <div class="platform-img">
+      <div class="platform-img" v-show="selectOption == 0">
         <!-- 左侧 -->
         <div class="left">
           <img src="../../public/imgs/product4.png" class="left-img" alt="">
+          <div class="select">
+            教师端
+            <div class="selectBtn" @click="selectOption = 1">←</div>
+          </div>
         </div>
         <!-- 右侧 -->
         <div class="right">
           <img src="../../public/imgs/product5.png" class="right-img" alt="">
+          <div class="select">
+          家长端
+          <div class="selectBtn" @click="selectOption = 2">→</div>
+          </div>
         </div>
+      </div>
+      <!-- 教师端 -->
+      <div class="platform-teachers" v-show="selectOption == 1">
+        <img src="../../public/imgs/product4.png" class="left-img" alt="">
+        <div class="teachers-right">
+          <span class="blue">教师端</span>&nbsp;是面向大学生团队服务的端口，大学生可以通过申请成为好学森平台的老师，在好学森平台上选择求职报名。被应聘成功后，老师需每周对学员进行学习情况的反馈。老师也可以在优辅导小程序上查看自己的工作安排。
+          <div class="back" @click="selectOption = 2">家长端</div>
+        </div>
+      </div>
+      <!-- 家长端 -->
+      <div class="platform-parents" v-show="selectOption == 2">
+        <div class="parents-left">
+          <span class="blue">家长端</span>&nbsp;是面向家长服务的端口，家长可以通过认证身份登录好学森平台，填写所需的订单信息，筛选平台所提供的匹配老师，并有助教实时联系，方便面试和签订心仪老师。家长每周会收到教师端发来的一个学生反馈，精准了解孩子情况。
+          <div class="back" @click="selectOption = 1">教师端</div>
+        </div>
+        <img src="../../public/imgs/product5.png" class="right-img" alt="">
       </div>
     </div>
     <!-- 功能介绍 -->
@@ -241,10 +265,12 @@ export default {
     onMounted(() => {
       document.body.addEventListener('touchstart', function () {}); //解决ipad hover伪类失效问题
     });
+    let selectOption = ref(0); // 0选择1老师2家长
     let panelSwitch = ref(0); // 0选择1家长2老师
     return {
       imagesUrl,
-      panelSwitch
+      panelSwitch,
+      selectOption
     };
   }
 };
@@ -355,19 +381,20 @@ export default {
     }
     .left {
       position: relative;
-      width: 45%;
+      width: 45vw;
       height: 48vw;
-      padding-left: 4%;
+      padding-left: 4vw;
       padding-top: 12vw;
+      margin-right: 4vw;
       letter-spacing: 0.48vw;
       .text {
         position: absolute;
         top: 45%;
-        left: 50%;
+        left: 25vw;
         transform: translate(-50%, -50%);
         .left-text1 {
           position: absolute;
-          top: -18%;
+          top: -5vw;
           left: 0;
           font-size: 3em;
           font-weight: 600;
@@ -381,6 +408,7 @@ export default {
           font-weight: bold;
           letter-spacing: -0.05vw;
           color: #3370ff;
+          text-align: center;
         }
 
         .left-text3 {
@@ -539,9 +567,14 @@ export default {
 .platform {
   background-color: #f7f9fb;
   text-align: center;
-  height: 75vw;
+  height: 55vw;
   width: 100%;
   min-width: 100%;
+  .title-img {
+    margin-top: 8vw;
+    width: 60%;
+    height: auto;
+  }
   .platform-img {
     position: relative;
     width: 100%;
@@ -554,25 +587,135 @@ export default {
       .left-img {
         position: absolute;
         top: 0;
-        left: 7%;
+        left: 26vw;
         width: auto;
-        height: 40vw;
+        height: 25vw;
+      }
+      .select {
+        position: absolute;
+        top: 4vw;
+        left: 28.5vw;
       }
     }
     .right {
       .right-img {
         position: absolute;
         top: 0;
-        right: 0;
+        right: 16vw;
         width: auto;
-        height: 40vw;
+        height: 25vw;
+      }
+      .select {
+        position: absolute;
+        top: 16vw;
+        right: 18vw;
       }
     }
   }
-  .title-img {
-    margin-top: 8vw;
-    width: 60%;
-    height: auto;
+  .platform-teachers {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-left: -4.1%;
+    margin-top: -6%;
+    .left-img {
+      position: absolute;
+      top: 0;
+      left: 22%;
+      width: auto;
+      height: 25vw;
+    }
+    .teachers-right {
+      position: absolute;
+      color: #480000;
+      font-size: 1.5vw;
+      top: -6vw;
+      left: 50vw;
+      width: 42vw;
+      height: 25vw;
+      padding-left: 4vw;
+      padding-top: 12vw;
+      margin-right: 4vw;
+      text-align: start;
+      letter-spacing: 0.3vw;
+      line-height: 2em;
+      .back {
+        position: absolute;
+        top: 28vw;
+        left: 37vw;
+      }
+    }
   }
+  .platform-parents {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-left: -4.1%;
+    margin-top: -7%;
+    .parents-left {
+      position: absolute;
+      color: #480000;
+      font-size: 1.5vw;
+      top: -7vw;
+      right: 41vw;
+      width:40.5vw;
+      height: 25vw;
+      padding-left: 4vw;
+      padding-top: 12vw;
+      margin-right: 4vw;
+      text-align: start;
+      letter-spacing: 0.3vw;
+      line-height: 2em;
+      .back {
+        position: absolute;
+        top: 28vw;
+        left: 4vw;
+      }
+    }
+    .right-img {
+      position: absolute;
+      top: 0;
+      right: 13%;
+      width: auto;
+      height: 25vw;
+    }
+  }
+}
+.select {
+  z-index: 10;
+  font-family: '\6977\4F53';
+  font-weight: bold;
+  color: white;
+  font-size: 2.5vw;
+  letter-spacing: 0.2vw;
+  text-shadow: #615a4e 0px 1px 2px;
+}
+.selectBtn {
+  color: #3370ff;
+  cursor: pointer;
+  font-weight: 400;
+}
+.selectBtn:hover {
+  z-index: 99;
+}
+
+.blue {
+  color: #3370ff;
+  font-size: 1.5vw;
+  font-family: '黑体';
+  font-weight: 800;
+  font-style: italic;
+}
+.back {
+  font-size: 1.8vw;
+  color: black;
+  font-style: italic;
+  font-family: 'Microsoft YaHei';
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>
