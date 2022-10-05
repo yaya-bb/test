@@ -396,13 +396,13 @@ export default {
           position: absolute;
           top: -5vw;
           left: 0;
-          font-size: 3em;
+          font-size: 3vw;
           font-weight: 600;
         }
 
         .left-text2 {
           margin-top: 2vw;
-          font-size: 2em;
+          font-size: 2vw;
           width: 37vw;
           line-height: 1.2em;
           font-weight: bold;
@@ -412,7 +412,7 @@ export default {
         }
 
         .left-text3 {
-          font-size: 1.5em;
+          font-size: 1.5vw;
           line-height: 2em;
           margin-top: 3vw;
           width: 100%;

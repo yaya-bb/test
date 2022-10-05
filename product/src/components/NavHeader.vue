@@ -55,7 +55,6 @@ export default {
       this.showNavMenu = true;
     }
   },
-
   props: {
     scrollFlag: Boolean
   }
