@@ -1,56 +1,58 @@
 <template>
   <div class="box column center">
+    <rotation-chart :showPictureNum="1" />
     <!-- 产品中心 -->
-    <img src="../../public/imgs/product1.jpg"
-         class="title-img"
-         style="width: 100%"/>
+    <img :src="imgCDN + 'product1.jpg'" class="title-img" style="width: 60%"/>
     <!-- 平台介绍 -->
     <div class="platform">
-      <img src="../../public/imgs/product3.png" class="title-img"/>
+      <img :src="imgCDN + 'product2.png'" class="title-img"/>
+      <!-- 选择状态 -->
       <div class="platform-img" v-show="selectOption == 0">
-        <!-- 左侧 -->
         <div class="left">
-          <img src="../../public/imgs/product4.png" class="left-img" alt="">
+          <img :src="imgCDN + 'product3.png'" class="left-img" alt="">
           <div class="select">
             教师端
             <div class="selectBtn" @click="selectOption = 1">←</div>
           </div>
         </div>
-        <!-- 右侧 -->
         <div class="right">
-          <img src="../../public/imgs/product5.png" class="right-img" alt="">
+          <img :src="imgCDN + 'product4.png'" class="right-img" alt="">
           <div class="select">
           家长端
           <div class="selectBtn" @click="selectOption = 2">→</div>
           </div>
         </div>
       </div>
-      <!-- 教师端 -->
+      <!-- 选择：教师端 -->
       <div class="platform-teachers" v-show="selectOption == 1">
-        <img src="../../public/imgs/product4.png" class="left-img" alt="">
-        <div class="teachers-right">
-          <span class="blue">教师端</span>&nbsp;是面向大学生团队服务的端口，大学生可以通过申请成为好学森平台的老师，在好学森平台上选择求职报名。被应聘成功后，老师需每周对学员进行学习情况的反馈。老师也可以在优辅导小程序上查看自己的工作安排。
+        <img :src="imgCDN + 'product3.png'" class="left-img" alt="">
+        <div class="teachers-info">
+          <span class="blue">教师端</span>
+          &nbsp;是面向大学生团队服务的端口，大学生可以通过申请成为好学森平台的老师，在好学森平台上选择求职报名。
+          被应聘成功后，老师需每周对学员进行学习情况的反馈。老师也可以在优辅导小程序上查看自己的工作安排。
           <div class="back" @click="selectOption = 2">家长端</div>
         </div>
       </div>
-      <!-- 家长端 -->
+      <!-- 选择：家长端 -->
       <div class="platform-parents" v-show="selectOption == 2">
-        <div class="parents-left">
-          <span class="blue">家长端</span>&nbsp;是面向家长服务的端口，家长可以通过认证身份登录好学森平台，填写所需的订单信息，筛选平台所提供的匹配老师，并有助教实时联系，方便面试和签订心仪老师。家长每周会收到教师端发来的一个学生反馈，精准了解孩子情况。
+        <div class="parents-info">
+          <span class="blue">家长端</span>
+          &nbsp;是面向家长服务的端口，家长可以通过认证身份登录好学森平台，填写所需的订单信息，筛选平台所提供
+          的匹配老师，并有助教实时联系，方便面试和签订心仪老师。家长每周会收到教师端发来的一个学生反馈，精准了解孩子情况。
           <div class="back" @click="selectOption = 1">教师端</div>
         </div>
-        <img src="../../public/imgs/product5.png" class="right-img" alt="">
+        <img :src="imgCDN + 'product4.png'" class="right-img" alt="">
       </div>
     </div>
     <!-- 功能介绍 -->
     <div class="function">
-      <img src="../../public/imgs/product6.jpg" class="title-img"/>
+      <img :src="imgCDN + 'product5.jpg'" class="title-img"/>
       <div class="panel" v-show="panelSwitch == 0">
         <!-- 左侧 -->
         <div class="left">
           <div class="text">
             <div class="left-text1">平台出发点</div>
-            <div class="left-text2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— — “优质 / 优价 / 优服务”</div>
+            <div class="left-text2">&nbsp;&nbsp;&nbsp;&nbsp;—— —— “优质 / 优价 / 优服务”</div>
             <div class="left-text3">
               平台采用五面一体，线上线下结合的模式，来保持优质的教育输出，用来满足每个需要家教的家庭。
             </div>
@@ -58,19 +60,16 @@
         </div>
         <!-- 右侧 -->
         <div class="right">
-          <img src="../../public/imgs/product2.jpg" class="function-img" />
-          <!-- 点击 -->
+          <img :src="imgCDN + 'product6.png'" class="function-img" />
           <div class="function-box">
             <div class="function-btn parents" @click="panelSwitch = 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
             <div class="function-btn teachers" @click="panelSwitch = 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
           </div>
         </div>
       </div>
-      <!-- 切换 -->
       <!-- 家长端 -->
       <div class="panel" v-show="panelSwitch == 1">
         <img :src="imagesUrl + 'pic26.png'" class="function-img" />
-        <!-- 返回键 -->
         <div class="function-btn back" @click="panelSwitch = 0">→</div>
         <div class="function-block" style="left: 35%; top: 9.6vw">
           <div style="width: 30%">
@@ -108,7 +107,8 @@
               <div>请假管理</div>
             </div>
             <div class="function-item2">
-              “请假管理”是好学森平台设计的个性化、人性化功能设计，家长可以在行程不便的时候，对课程进行“请假”或者“更改上课时间”协调处理。
+              “请假管理”是好学森平台设计的个性化、人性化功能设计，家长可以在行程不便
+              的时候，对课程进行“请假”或者“更改上课时间”协调处理。
             </div>
           </div>
           <div style="width: 28%">
@@ -155,7 +155,8 @@
               <div>消息助手</div>
             </div>
             <div class="function-item2">
-              为了提高对家长服务的高效性、便利性；好学森平台针对各项特色功能开发了五个ai智能小助手：打卡、评价、查课、请假、家教小助手。
+              为了提高对家长服务的高效性、便利性；好学森平台针对各项特色功能
+              开发了五个ai智能小助手：打卡、评价、查课、请假、家教小助手。
             </div>
           </div>
         </div>
@@ -172,7 +173,8 @@
               <div>寻找教师系统</div>
             </div>
             <div class="function-item2">
-              该功能是便于老师匹配订单，更快且方便的找到工作。老师可选择订单进行报名，家长可选择参加报名的老师。只有报名成功，信息会记录在相应位置。
+              该功能是便于老师匹配订单，更快且方便的找到工作。老师可选择订单进行报名，家
+              长可选择参加报名的老师。只有报名成功，信息会记录在相应位置。
             </div>
           </div>
           <div style="width: 28%">
@@ -222,9 +224,8 @@
               <div>助教咨询</div>
             </div>
             <div class="function-item2">
-              助教咨询是给老师提供疑难解答的平台。若老师想查询订单阶段，发送带有
-              关键词的话语，后台即可根据关键词发送对应内容，并提醒内容解决的时长以及
-              提供人工服务。
+              助教咨询是给老师提供疑难解答的平台。若老师想查询订单阶段，发送带有关键词的话语
+              ，后台即可根据关键词发送对应内容，并提醒内容解决的时长以及提供人工服务。
             </div>
           </div>
         </div>
@@ -235,7 +236,8 @@
               <div>反馈系统</div>
             </div>
             <div class="function-item2">
-              为了让学员能够了解自己的情况，老师能够清晰学员的进程，老师可对学员的学习情况进行反馈和评价，家长可查看老师的反馈和进行评价。
+              为了让学员能够了解自己的情况，老师能够清晰学员的进程，老师可对学员的学习
+              情况进行反馈和评价，家长可查看老师的反馈和进行评价。
             </div>
           </div>
           <div style="width: 28%">
@@ -262,6 +264,9 @@ export default {
     const imagesUrl = ref(
       'https://yq-guangzhou-bucket.oss-cn-guangzhou.aliyuncs.com/website/images/'
     );
+    const imgCDN = ref(
+      'https://yq-guangzhou-bucket.oss-cn-guangzhou.aliyuncs.com/website/new/images/'
+    );
     onMounted(() => {
       document.body.addEventListener('touchstart', function () {}); //解决ipad hover伪类失效问题
     });
@@ -270,15 +275,16 @@ export default {
     return {
       imagesUrl,
       panelSwitch,
-      selectOption
+      selectOption,
+      imgCDN
     };
   }
 };
 </script>
 <style lang="scss" scoped>
+@import '@/assets/scss/mixin.scss';
 .column {
-  display: flex;
-  flex-direction: column;
+  @include flex(column);
 }
 .center {
   align-items: center;
@@ -288,434 +294,238 @@ export default {
   width: 100%;
   position: relative;
   .title-img {
-    margin-top: 8vw;
-    margin-bottom: 8vw;
-    width: 40%;
-    height: auto;
+    @include wH(40%, auto);
+    padding: 5vw;
   }
-  .sub-box {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 7vw;
-    width: 100%;
-    .pic-img {
-      width: 60%;
-      height: auto;
-    }
-    .describe-box {
-      width: 39%;
-      position: absolute;
-      left: 61%;
-      .white-box {
-        right: 50px;
-        width: 100%;
-        height: auto;
-        padding-bottom: 1vw;
-        background-color: rgba(255, 255, 255, 0.4);
-        position: absolute;
-      }
-    }
-  }
-  .white-text {
-    font-size: 3.5em;
-    text-align: start;
-    margin-left: 1vw;
-    margin-right: 1vw;
-    line-height: 1.5em;
-    color: #303133;
-    font-weight: 300;
-  }
-  .white-text2 {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.4);
-    position: absolute;
-    bottom: -1vw;
+  // 平台介绍
+  .platform {
+    background-color: #f7f9fb;
     text-align: center;
-    font-size: 5em;
-    font-style: italic;
-    font-family: '\6977\4F53';
-    font-weight: 900;
-    color: #3370ff;
-  }
-  .intro-box {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    .intro-img {
-      width: 50%;
-      height: auto;
-    }
-    .pc-intro-img {
-      position: absolute;
-      left: 50%;
-    }
-    .pc-intro-text-box {
-      transform: translateX(-45%);
-    }
-    .intro-text-box {
-      width: 45%;
-      padding: 5vw;
-      margin: auto;
-      font-size: 3.5em;
-      line-height: 2em;
-      text-align: start;
-      font-weight: 300;
-      letter-spacing: 5px;
-      .intro-text-title {
-        font-size: 1.1em;
-        color: #3370ff;
-        margin-right: 1vw;
-        font-weight: bold;
+    @include wH(100%, 48vw);
+    min-width: 100%;
+    .platform-img {
+      @include position(relative,0, 0, 100%);
+      @include flex(center, center);
+      @include platform-margin(-4.1%);
+      .left {
+        .left-img {
+          @include position(absolute, 1vw, 26vw,auto, 25vw);
+        }
+        .select {
+          position: absolute;
+          top: 5vw;
+          left: 29vw;
+        }
       }
+      .right {
+        .right-img {
+          @include position(absolute, 1vw, 51.6vw,auto, 25vw);
+        }
+        .select {
+          position: absolute;
+          top: 18.5vw;
+          left: 72.5vw;
+        }
+      }
+    }
+    .platform-teachers {
+      @include position(relative);
+      @include flex(center, center);
+      @include platform-margin(-10%);
+      .left-img {
+        @include position(absolute, 1vw, 22%,auto, 25vw);
+      }
+      .teachers-info {
+        @include font(1.5vw, 2em, normal, 0.3vw, #480000);
+        @include position(absolute, -6vw, 50vw,42vw, 25vw);
+        padding-left: 4vw;
+        padding-top: 12vw;
+        margin-right: 4vw;
+        text-align: start;
+        .back {
+          @include position(absolute, 29vw, 37vw);
+        }
+      }
+    }
+    .platform-parents {
+      @include position(relative);
+      @include flex(center, center);
+      @include platform-margin(2%);
+      .parents-info {
+        @include font(1.5vw, 2em, normal, 0.3vw, #480000);
+        @include position(absolute, -7vw, 5vw,40.5vw, 25vw);
+        padding-left: 4vw;
+        padding-top: 12vw;
+        margin-right: 4vw;
+        text-align: start;
+        .back {
+          @include position(absolute, 30vw, 4vw);
+        }
+      }
+      .right-img {
+        @include position(absolute, 1vw, 48vw,auto, 25vw);
+      }
+    }
+    .select {
+      @include font(2.5vw, normal, bold, 0.2vw, white);
+      font-family: '\6977\4F53';
+      text-shadow: #615a4e 0px 1px 2px;
+    }
+    .selectBtn {
+      @include font(2.5vw, normal, 400, 0, #3370ff);
+      cursor: pointer;
+    }
+    .selectBtn:hover {
+      z-index: 99;
     }
   }
   //功能介绍
   .function {
+    width: 100%;
     text-align: center;
-    margin-top: -4vw;
-    // width: 100%;
-    .title-img {
-      width: 60%;
-      height: auto;
-    }
+    margin-bottom: -22vw;
     .left {
-      position: relative;
-      width: 45vw;
-      height: 48vw;
-      padding-left: 4vw;
-      padding-top: 12vw;
-      margin-right: 4vw;
+      @include position(relative,0, 0, 40vw, 42vw);
+      padding-top: 20vw;
+      margin-top: 2vw;
       letter-spacing: 0.48vw;
       .text {
-        position: absolute;
-        top: 45%;
-        left: 25vw;
+        @include position(absolute, 26vw, 24vw);
         transform: translate(-50%, -50%);
         .left-text1 {
+          @include font(3vw, normal, 600, 0, black);
           position: absolute;
           top: -5vw;
           left: 0;
-          font-size: 3vw;
-          font-weight: 600;
         }
-
         .left-text2 {
-          margin-top: 2vw;
-          font-size: 2vw;
+          @include font(1.8vw, 4vw, bold, -0.01vw, #3370ff);
+          margin-top: 1vw;
           width: 37vw;
-          line-height: 1.2em;
-          font-weight: bold;
-          letter-spacing: -0.05vw;
-          color: #3370ff;
-          text-align: center;
         }
-
         .left-text3 {
-          font-size: 1.5vw;
-          line-height: 2em;
+          @include font(1.2vw, 2.7vw, normal, 0.4vw, #615a4e);
           margin-top: 3vw;
-          width: 100%;
-          color: #615a4e;
+          width: 33vw;
           text-align: start;
         }
       }
     }
     .right {
       position: relative;
+      text-align: center;
+      margin-top: 2vw;
       .function-box {
+        @include flex(space-between, column);
         position: absolute;
         top: 9vw;
-        height: 10%;
-        width: 10%;
-        right: -200px;
-        margin-top: 10%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        height: 42vw;
+        width: auto;
         letter-spacing: 0.3vw;
         .parents {
-          position: absolute;
-          top: 13%;
-          left: 15vw;
+          @include position(absolute, -1vw, 34vw);
         }
         .teachers {
-          position: absolute;
-          top: 570%;
-          left: 15vw;
+          @include position(absolute, 21.5vw, 34vw);
         }
       }
       .function-img {
         position: absolute;
         top: 0;
-        left: -100px;
       }
+    }   
+    .function-img {
+      @include wH(auto, 42vw);
+    }
+    .function-btn {
+      @include font(6vw, normal, bold, 0, #fff);
+      opacity: 0.8;
+      cursor: pointer;
+      text-align: center;
+      z-index: 99999;
+    }
+    .function-btn:hover {
+      opacity: 0.9;
+    }
+    .panel {
+      margin-top: -4vw;
+      @include position(relative, 0, 0, auto, 42vw);
+      animation: slideIn 0.3s ease;
+      @include flex(flex-start, stretch, row);
+    }
+    .back {
+      position: absolute;
+      top: 32vw;
+      left: 2vw;
+      opacity: 1 !important;
+    }
+    .function-block {
+      z-index: 0;
+      @include position(absolute, 0, 0, 62%, 6vw);
+      @include flex(space-between, flex-start, row);
+    }
+    .function-block:hover {
+      z-index: 999;
+    }
+    .function-item {
+      @include position(relative, 0, 0, 100%, fit-content);
+      @include flex(center, center, row);
+      @include font(2vw, normal, bold, 0.2vw, #3370ff);
+      background-color: white;
+      box-shadow: 1px 2px 4px #8eb0ff;
+      padding: 1.2vw;
+      border-radius: 0.6vw;
+    }
+    .function-item:hover {
+      background-color: #3370ff;
+      color: white;
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s;
+    }
+    /* > 改变子元素样式 */
+    .function-item:hover > .blue-block {
+      opacity: 0.6;
+      transition: transform 0.5s, opacity 0.5s;
+      -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+    }
+    /* 改变同级元素样式 */
+    .function-item:hover + .function-item2 {
+      opacity: 1;
+      transition: transform 0.5s, opacity 0.5s;
+      -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+    }
+    .blue-block {
+      @include position(absolute, -0.6vw, -0.6vw,2.4vw, 2.4vw);
+      background-color: #3370ff;
+      border-top-left-radius: 50%;
+    }
+    .function-item2 {
+      @include font(1vw, 1.5em, bold, 0.2vw, #909399);
+      width: 100%;
+      padding: 1.2vw 8%;
+      background-color: white;
+      box-shadow: 1px 2px 4px #dae3fb;
+      border-bottom-left-radius: 2vw;
+      border-top-left-radius: 1vw;
+      border-top-right-radius: 1vw;
+      border-bottom-right-radius: 2vw;
+      opacity: 0;
+      margin-top: 4px;
     }
   }
 
-  .function-img {
-    width: auto;
-    height: 48vw;
+  // 蓝色字体
+  .blue {
+    @include font(1.5vw, normal, 800, 0, #3370ff);
+    font-family: '黑体';
+    font-style: italic;
   }
-
-  .function-btn {
-    font-size: 4em;
-    font-weight: bold;
-    color: #fff;
-    opacity: 0.8;
-    cursor: pointer;
-    text-align: center;
-    z-index: 99999;
-  }
-
-  .function-btn:hover {
-    opacity: 0.9;
-  }
-  .panel {
-    margin-top: -4vw;
-    position: relative;
-    width: auto;
-    height: 48vw;
-    animation: slideIn 0.3s ease;
-    display: flex;
-    flex-direction: row;
-  }
+  // 切换端按钮
   .back {
-    position: absolute;
-    bottom: 4.8vw;
-    left: 6vw;
-    opacity: 1 !important;
+    @include font(1.8vw, normal, bold, 0, blank);
+    font-style: italic;
+    font-family: 'Microsoft YaHei';
+    cursor: pointer;
   }
-  .function-block {
-    position: absolute;
-    width: 62%;
-    height: 6vw;
-    justify-content: space-between;
-    z-index: 0;
-    display: flex;
-    flex-direction: row;
-  }
-  .function-block:hover {
-    z-index: 999;
-  }
-
-  .function-item {
-    position: relative;
-    background-color: white;
-    width: 100%;
-    box-shadow: 1px 2px 4px #8eb0ff;
-    height: fit-content;
-    padding: 1.2vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2em;
-    font-weight: bold;
-    color: #3370ff;
-    letter-spacing: 0.2vw;
-    border-radius: 0.6vw;
-  }
-
-  .function-item:hover {
-    background-color: #3370ff;
-    color: white;
-    transition: all 0.3s;
-    -webkit-transition: all 0.3s;
-  }
-
-  /* > 改变子元素样式 */
-  .function-item:hover > .blue-block {
-    opacity: 0.6;
-    transition: transform 0.5s, opacity 0.5s;
-    -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
-  }
-
-  /* 改变同级元素样式 */
-  .function-item:hover + .function-item2 {
-    opacity: 1;
-    transition: transform 0.5s, opacity 0.5s;
-    -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
-  }
-  .blue-block {
-    position: absolute;
-    background-color: #3370ff;
-    width: 2.4vw;
-    height: 2.4vw;
-    left: -0.6vw;
-    top: -0.6vw;
-    border-top-left-radius: 50%;
-  }
-  .function-item2 {
-    width: 100%;
-    font-size: 1em;
-    letter-spacing: 0.2vw;
-    line-height: 1.5em;
-    color: #909399;
-    font-weight: bold;
-    padding: 1.2vw 8%;
-    background-color: white;
-    box-shadow: 1px 2px 4px #dae3fb;
-    border-bottom-left-radius: 2vw;
-    border-top-left-radius: 1vw;
-    border-top-right-radius: 1vw;
-    border-bottom-right-radius: 2vw;
-    opacity: 0;
-    margin-top: 4px;
-  }
-}
-// 平台介绍
-.platform {
-  background-color: #f7f9fb;
-  text-align: center;
-  height: 55vw;
-  width: 100%;
-  min-width: 100%;
-  .title-img {
-    margin-top: 8vw;
-    width: 60%;
-    height: auto;
-  }
-  .platform-img {
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    margin-left: -4.1%;
-    margin-top: -6%;
-    .left {
-      .left-img {
-        position: absolute;
-        top: 0;
-        left: 26vw;
-        width: auto;
-        height: 25vw;
-      }
-      .select {
-        position: absolute;
-        top: 4vw;
-        left: 28.5vw;
-      }
-    }
-    .right {
-      .right-img {
-        position: absolute;
-        top: 0;
-        right: 16vw;
-        width: auto;
-        height: 25vw;
-      }
-      .select {
-        position: absolute;
-        top: 16vw;
-        right: 18vw;
-      }
-    }
-  }
-  .platform-teachers {
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    margin-left: -4.1%;
-    margin-top: -6%;
-    .left-img {
-      position: absolute;
-      top: 0;
-      left: 22%;
-      width: auto;
-      height: 25vw;
-    }
-    .teachers-right {
-      position: absolute;
-      color: #480000;
-      font-size: 1.5vw;
-      top: -6vw;
-      left: 50vw;
-      width: 42vw;
-      height: 25vw;
-      padding-left: 4vw;
-      padding-top: 12vw;
-      margin-right: 4vw;
-      text-align: start;
-      letter-spacing: 0.3vw;
-      line-height: 2em;
-      .back {
-        position: absolute;
-        top: 28vw;
-        left: 37vw;
-      }
-    }
-  }
-  .platform-parents {
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    margin-left: -4.1%;
-    margin-top: -7%;
-    .parents-left {
-      position: absolute;
-      color: #480000;
-      font-size: 1.5vw;
-      top: -7vw;
-      right: 41vw;
-      width:40.5vw;
-      height: 25vw;
-      padding-left: 4vw;
-      padding-top: 12vw;
-      margin-right: 4vw;
-      text-align: start;
-      letter-spacing: 0.3vw;
-      line-height: 2em;
-      .back {
-        position: absolute;
-        top: 28vw;
-        left: 4vw;
-      }
-    }
-    .right-img {
-      position: absolute;
-      top: 0;
-      right: 13%;
-      width: auto;
-      height: 25vw;
-    }
-  }
-}
-.select {
-  z-index: 10;
-  font-family: '\6977\4F53';
-  font-weight: bold;
-  color: white;
-  font-size: 2.5vw;
-  letter-spacing: 0.2vw;
-  text-shadow: #615a4e 0px 1px 2px;
-}
-.selectBtn {
-  color: #3370ff;
-  cursor: pointer;
-  font-weight: 400;
-}
-.selectBtn:hover {
-  z-index: 99;
-}
-
-.blue {
-  color: #3370ff;
-  font-size: 1.5vw;
-  font-family: '黑体';
-  font-weight: 800;
-  font-style: italic;
-}
-.back {
-  font-size: 1.8vw;
-  color: black;
-  font-style: italic;
-  font-family: 'Microsoft YaHei';
-  font-weight: bold;
-  cursor: pointer;
 }
 </style>

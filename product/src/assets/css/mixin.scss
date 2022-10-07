@@ -1,0 +1,36 @@
+@mixin bgImg {
+  
+}
+
+@mixin position($pos: absolute, $top: 0, $left: 0,$w:100%, $h: auto) {
+  position: $pos;
+  top: $top;
+  left: $left;
+  width: $w;
+  height: $h;
+}
+
+@mixin wH($w: 0, $h: 0) {
+  width: $w;
+  height: $h;
+}
+
+@mixin font($size, $lineHeight, $weight, $spacing, $color: black) {
+  font-size: $size;
+  line-height: $lineHeight;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  color: $color;
+}
+
+@mixin flex($hov: space-between, $col: center,$flex-direction: column) {
+  display: flex;
+  justify-content: $hov;
+  align-items: $col;
+  flex-direction: $flex-direction;
+}
+
+@mixin platform-margin($left) {
+  margin-left: $left;
+  margin-top: -4.5%;
+}
