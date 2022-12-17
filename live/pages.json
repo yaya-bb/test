@@ -18,11 +18,34 @@
             "path" : "pages/my/my",
             "style" : {}
         }
+        ,{
+            "path" : "pages/live/live",
+            "style" : {
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+        }
+        ,{
+            "path" : "pages/coin/coin",
+            "style" : {
+				"navigationBarTitleText":"我的余额",
+				"navigationBarBackgroundColor":"#FFFFFF",
+				"navigationBarTextStyle": "black"
+			}
+        }
+        ,{
+            "path" : "pages/create-live/create-live",
+            "style" : {
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+        }
     ],
-		// 顶部导航栏设置
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "直播",
+		"navigationBarTitleText": "帝莎直播",
 		"navigationBarBackgroundColor": "#8745FF",
 		"backgroundColor": "#8745FF"
 	},
