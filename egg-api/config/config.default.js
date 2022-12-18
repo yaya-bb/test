@@ -16,8 +16,15 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1579788120104_5194';
 
   // add your middleware config here
-  config.middleware = [];
+  // 添加中间键,不管走哪个路由优先走这个
+  config.middleware = ['errorHandler'];
 
+  config.errorHandler = {
+    // 通用配置
+    // enable: false, // 控制中间件是否开启
+    // match: ["/user/list", '/user/read'], // 设置只有符合某些规则的请求才会经过这个中间件（匹配路由）
+    // ignore: ['/user/list'] // 设置符合某些规则的请求不经过这个中间件
+  };
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
@@ -37,6 +44,35 @@ module.exports = appInfo => {
     origin: '*',
     allowMethods: 'GET, PUT, POST, DELETE, PATCH'
   };
+ // 数据库
+ config.sequelize = {
+  dialect: 'mysql',
+  host: '127.0.0.1',
+  username: 'root',
+  password: "123456",
+  port: 3306,
+  database: 'eggapi',
+  // 中国时区
+  timezone: '+08:00',
+  define: {
+    // 取消数据表名复数
+    freezeTableName: true,
+    // 自动写入时间戳 created_at updated_at
+    timestamps: true,
+    // 字段生成软删除时间戳 deleted_at
+    //paranoid: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+    //deletedAt: 'deleted_at',
+    // 所有驼峰命名格式化
+    underscored: true
+  }
+};
+config.valparams = {
+  locale: 'zh-cn',
+  // 主动抛出异常
+  throwError: true
+};
 
   return {
     ...config,
