@@ -1,0 +1,11 @@
+
+.danmu{
+	color: #FFFFFF;
+	font-size: 30rpx!important;
+}
+.danmu-username{
+	font-weight: bold;
+	color:#24ACF2;
+	font-size: 30rpx!important;
+}
+

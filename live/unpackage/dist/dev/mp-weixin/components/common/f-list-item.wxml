@@ -1,0 +1,1 @@
+<view class="p-3 flex align-center" hover-class="bg-light" data-event-opts="{{[['tap',[['$emit',['click']]]]]}}" bindtap="__e"><text class="{{['iconfont','mr-3',icon]}}"></text><text class="font-md">{{title}}</text><view class="ml-auto"><slot></slot><block wx:if="{{showRight}}"><text class="text-muted font ml-2">></text></block></view></view>

@@ -1,0 +1,240 @@
+<template>
+    <view class="page">
+        <live-pusher 
+		id='livePusher' 
+		ref="livePusher" 
+		class="livePusher" 
+		:url="url"
+        :mode="mode" 
+		:enable-camera="enableCamera" 
+		:auto-focus="true" 
+		:device-position="position"
+		:beauty="beauty" 
+		:whiteness="whiteness"
+        aspect="9:16" 
+		@statechange="statechange" 
+		@netstatus="netstatus" 
+		@error = "error"
+        :style="'height: '+windowHeight+'px;'"
+		>
+		</live-pusher>
+		
+		<view v-if="showBars">
+			<!-- 关闭按钮 -->
+			<view class="live-btn" style="left: 0;top: 95rpx;" 
+			@click="back">
+				<text class="iconfont text-white">&#xe607;</text>
+			</view>
+			
+			<!-- 封面标题 -->
+			<view style="width: 560rpx;height: 150rpx;position: fixed;top: 95rpx;left: 95rpx;right: 95rpx;background-color: rgba(0,0,0,0.2);" class="rounded p-2 flex">
+				<view class="position-relative mr-3" style="width: 115rpx;height: 115rpx;" @click="chooseCover">
+					<image :src="form.cover" style="width: 115rpx;height: 115rpx;" class="rounded bg-light"></image>
+					<text class="text-light font-sm position-absolute"
+					style="left: 0;bottom: 0;right: 0;">更换封面</text>
+				</view>
+				
+				<view class="flex flex-column">
+					<input type="text" placeholder="请输入直播标题" class="text-white font-md font-weight-bold" v-model="form.title" style="width: 375rpx;height: 60rpx;"/>
+					<view class="mt-2">
+						<text class="text-white font">#选择分类</text>
+					</view>
+				</view>
+				
+			</view>
+			
+			<!-- 右边功能 -->
+			<view class="live-btn live-btn-right" style="top: 95rpx;"
+			@click="switchCamera">
+				<text class="iconfont text-white">&#xe605;</text>
+				<text class="text-white font mt-2">翻转</text>
+			</view>
+			<view class="live-btn live-btn-right" style="top:235rpx;"
+			@click="openPopup('mode')">
+				<text class="iconfont text-white">&#xe60c;</text>
+				<text class="text-white font mt-2">画质</text>
+			</view>
+			<view class="live-btn live-btn-right" style="top:375rpx;"
+			@click="openPopup('beauty')">
+				<text class="iconfont text-white">&#xe632;</text>
+				<text class="text-white font mt-2">美颜</text>
+			</view>
+			<view class="live-btn live-btn-right" style="top: 515rpx;"
+			@click="openPopup('whiteness')">
+				<text class="iconfont text-white">&#xe631;</text>
+				<text class="text-white font mt-2">美白</text>
+			</view>
+			
+			<!-- 开始直播 -->
+			<view class="live-play-btn bg-main rounded-circle flex align-center justify-center" hover-class="bg-main-hover" @click="startLive">
+				<text class="text-white font-md">开始视频直播</text>
+			</view>
+			
+			<f-liveroom-popup
+			ref="popup"
+			:beauty="beauty"
+			:mode="mode"
+			:popupType="popupType"
+			:whiteness="whiteness"
+			@change="popupChange"
+			></f-liveroom-popup>
+			
+		</view>
+		
+		
+
+    </view>
+</template>
+<script>
+	import fLiveroomPopup from '@/components/common/f-liveroom-popup.vue';
+	import $H from '@/common/request.js';
+    export default {
+		components: {
+			fLiveroomPopup
+		},
+        data() {
+           return {
+			   url:"",
+			   mode:"SD",
+			   enableCamera:true,
+			   position:"back",
+			   beauty:1,
+			   whiteness:1,
+			   context:null,
+			   windowHeight:0,
+			   showBars:true,
+			   
+			   popupType:"mode",
+			   
+				form:{
+					title:"",
+					cover:"/static/gift/4.png"
+				}
+		   }
+        },
+		created() {
+			let res = uni.getSystemInfoSync()
+			this.windowHeight = res.windowHeight
+		},
+        onReady() {
+            this.context = uni.createLivePusherContext("livePusher", this);
+			// 开启预览
+			this.startPreview()
+        },
+		onBackPress() {
+			this.showBars = false
+		},
+        methods: {
+			chooseCover(){
+				uni.chooseImage({
+					count:1,
+					success: (res) => {
+						console.log(res.tempFilePaths[0]);
+					}
+				})
+			},
+			popupChange(e){
+				switch (e.type){
+					case 'beauty':
+					this.beauty = e.detail.detail.value
+						break;
+					case 'whiteness':
+					this.whiteness = e.detail.detail.value
+						break;
+					case 'mode':
+					this.mode = e.detail.value
+					uni.showToast({
+						title: '画质切换为'+ e.detail.name,
+						icon: 'none'
+					});
+					this.$refs.popup.close()
+						break;
+				}
+			},
+			openPopup(type){
+				this.popupType = type
+				this.$refs.popup.open()
+			},
+			back(){
+				uni.navigateBack({
+					delta: 1
+				});
+			},
+			// 状态变化事件
+            statechange(e) {
+                // console.log("statechange:" + JSON.stringify(e));
+            },
+			// 网络状态通知
+            netstatus(e) {
+                console.log("netstatus:" + JSON.stringify(e));
+            },
+			// 渲染错误事件
+            error(e) {
+                console.log("error:" + JSON.stringify(e));
+            },
+            // 切换前置后置
+            switchCamera() {
+                this.context.switchCamera({
+                    success: (a) => {
+                       this.position = this.position === 'front' ? 'back' : 'front'
+                    }
+                });
+            },
+			// 开始预览
+            startPreview() {
+                this.context.startPreview({
+                    success: (a) => {
+                        // console.log("livePusher.startPreview:" + JSON.stringify(a));
+                    }
+                });
+            },
+			stopPreview() {
+			    this.context.stopPreview({
+			        success: (a) => {
+			            // console.log("livePusher.stopPreview:" + JSON.stringify(a));
+			        }
+			    });
+			},
+			// 开始直播
+			startLive(){
+				$H.post('/live/create',this.form,{
+					token:true
+				}).then(data=>{
+					uni.navigateTo({
+						url: '../liveroom/liveroom?options='+JSON.stringify({
+							mode:this.mode,
+							position:this.position,
+							beauty:this.beauty,
+							whiteness:this.whiteness,
+						})+ '&data='+encodeURIComponent(JSON.stringify(data))
+					});
+				})
+			}
+        }
+    }
+</script>
+<style>
+	.page {
+		flex: 1;
+		width: 750rpx;
+		background-color: #0E151D;
+	}
+	.live-btn{
+		position: fixed;
+		width: 90rpx;
+		height: 100rpx;
+		/* #ifndef APP-PLUS-NVUE */
+		display: flex;
+		/* #endif */
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.live-btn-right{
+		right: 0;
+		height: 130rpx;
+	}
+	.live-play-btn{
+		width: 560rpx;height: 120rpx;position: fixed;bottom: 95rpx;left: 95rpx;right: 95rpx;
+	}
+</style>

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我的余额",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "uni-popup": "/components/uni-ui/uni-popup/uni-popup",
+    "uni-popup-dialog": "/components/uni-ui/uni-popup/uni-popup-dialog"
+  }
+}

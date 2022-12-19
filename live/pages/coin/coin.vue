@@ -36,7 +36,7 @@
 				<text class="iconfont text-warning mr-1">&#xe633;</text>
 				<text class="font-md font-weight-bold">{{price}}</text>
 			</view>
-			<view class="bg-main rounded flex align-center justify-center ml-auto" style="width: 150rpx;height: 70rpx;">
+			<view class="bg-main rounded flex align-center justify-center ml-auto" style="width: 150rpx;height: 70rpx;" @click="pay">
 				<text class="text-white font-md">去充值</text>
 			</view>
 		</view>
@@ -88,6 +88,40 @@
 			}
 		},
 		methods: {
+			pay(){
+				this.$H.post('/gift/wxpay',{
+					price:this.price
+				},{
+					token:true
+				}).then(orderInfo=>{
+					console.log(orderInfo);
+					uni.requestPayment({
+						provider:"wxpay",
+						orderInfo:orderInfo,
+						success: (res) => {
+							this.$store.dispatch('getUserInfo')
+							uni.showToast({
+								title: '充值成功',
+								icon: 'none'
+							});
+							uni.navigateBack({
+								delta: 1
+							});
+							console.log(res);
+						},
+						fail: (err) => {
+							console.log(err);
+							uni.showModal({
+								title: '提示',
+								content: '支付失败',
+								showCancel: false,
+							});
+						}
+					})
+				}).catch(err=>{
+					console.log(err);
+				})
+			},
 			chooseCoin(index) {
 				this.activeIndex = index
 				let p = this.list[index].price

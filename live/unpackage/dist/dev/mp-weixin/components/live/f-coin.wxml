@@ -1,0 +1,1 @@
+<view class="btn flex align-center px-2" style="width:250rpx;height:60rpx;"><text class="text-warning font mr-1">金币</text><text class="text-light font">{{value}}</text></view>

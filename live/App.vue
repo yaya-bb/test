@@ -2,7 +2,6 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-			
 			const domModule = weex.requireModule('dom')
 			domModule.addRule('fontFace', {
 			    'fontFamily': "iconfont",
@@ -11,11 +10,13 @@
 			
 			// 监听底部导航中间凸起按钮
 			uni.onTabBarMidButtonTap(()=>{
-				uni.navigateTo({
+				this.authJump({
 					url: '/pages/create-live/create-live',
-				});
+				})
 				console.log('点击了中间按钮');
 			})
+			
+			this.$store.dispatch('initUser')
 			
 		},
 		onShow: function() {

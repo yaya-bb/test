@@ -43,7 +43,7 @@
 					if(len > 0 && this.list[len - 1]){
 						this.scrollInToView = 'danmu' + this.list[len - 1].id
 					}
-				},200)
+				},300)
 			}
 		},
 	}
