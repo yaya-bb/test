@@ -3,9 +3,9 @@
 const Controller = require('egg').Controller;
 const fs = require('fs');
 const path = require('path');
-//故名思意 异步二进制 写入流
+// 异步二进制 写入流
 const awaitWriteStream = require('await-stream-ready').write;
-//管道读入一个虫洞。
+// 管道读入一个虫洞。
 const sendToWormhole = require('stream-wormhole');
 const dayjs = require('dayjs');
 class CommonController extends Controller {
