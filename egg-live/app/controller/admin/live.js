@@ -4,6 +4,7 @@ const Controller = require('egg').Controller;
 class LiveController extends Controller {
     async index() {
         const { ctx, app } = this;
+        // 直播tabs
         let tabs = [{
             name:"全部",
             url:"/admin/live",
