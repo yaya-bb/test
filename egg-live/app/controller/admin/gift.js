@@ -2,6 +2,7 @@
 
 const Controller = require('egg').Controller;
 const fields = [{
+    // 区域
     label: "礼物名称",
     type: "text",
     name: "name",
@@ -68,7 +69,7 @@ class GiftController extends Controller {
             }
         })
     }
-
+    // 增加礼物
     async create() {
         const { ctx, app } = this;
         await ctx.renderTemplate({
