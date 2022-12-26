@@ -7,6 +7,7 @@ module.exports = app => {
             primaryKey: true,
             autoIncrement: true
         },
+        // 直播间id
         live_id: {
             type: INTEGER,
             allowNull: false,
@@ -19,6 +20,7 @@ module.exports = app => {
             onDelete: 'cascade',
             onUpdate: 'restrict', // 更新时操作
         },
+        // 使用者id
         user_id: {
             type: INTEGER,
             allowNull: false,
@@ -31,6 +33,7 @@ module.exports = app => {
             onDelete: 'cascade',
             onUpdate: 'restrict', // 更新时操作
         },
+        // 礼物id
         gift_id: {
             type: INTEGER,
             allowNull: false,
